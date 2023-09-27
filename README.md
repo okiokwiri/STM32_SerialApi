@@ -1,6 +1,6 @@
 ![Banner](https://github.com/BojanG72/STM32-Ceedling-Base/blob/main/banner.png)
 
-# REFLOW OVEN WITH STM32F4
+# TEMP_SENSOR_DATA_OVER_TCP WITH STM32F4
 
 ![GitHub](https://img.shields.io/github/last-commit/okiokwiri/TEMP_SENSOR_DATA_OVER_TCP)
 ![GitHub](https://img.shields.io/github/license/bojang72/STM32-Ceedling-Base)
