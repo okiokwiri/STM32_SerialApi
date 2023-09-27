@@ -2,7 +2,7 @@
 
 # REFLOW OVEN WITH STM32F4
 
-![GitHub](https://img.shields.io/github/last-commit/Okwiri/ToasterFlowOven)
+![GitHub](https://img.shields.io/github/last-commit/okiokwiri/TEMP_SENSOR_DATA_OVER_TCP)
 ![GitHub](https://img.shields.io/github/license/bojang72/STM32-Ceedling-Base)
 
 This project is built from the stm-32 ceedling base found at https://github.com/BojanG72/STM32-Ceedling-Base.git. Credit to BojanG72 for creating the STM32BASE.
@@ -19,7 +19,9 @@ The ceedling project.yml file has been setup to compile for a cortex M4 processo
 installed on your host machine when the test command is run. 
 
 # Interesting project features
-An interesting and weird feature I intend to implement is a TCP connection. This will allow for OTA firmware updates to the oven :-D
+Some interesting feature:
+  1. Temperature sensor transmission via TCP
+  2.  Support for Over the air firmware updates over TCP
 
 
 # Concepts that will be explored
