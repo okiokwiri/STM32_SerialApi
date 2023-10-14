@@ -4,6 +4,7 @@
 
 #include "TempSensorHardware.h"
 #include "mock_spi1.h"
+#include "mock_TEMPSENSOR_TemperatureDecoder.h"
 void setUp(void)
 {
 }
@@ -20,7 +21,8 @@ void test_TempSensorHardware_Initialize_Should_Call_The_SPI1Initialize_Function_
 void test_TEMPSENSORHARDWARE_ReadValue_Should_Return_a_Value_Equal_To_What_Has_been_Returned_From_The_read_SPI_16bIT_Function()
 {
 	read_SPI1_16bit_ExpectAndReturn(0xAABB);
-	TEST_ASSERT_EQUAL_HEX16(0xAABB,TEMPSENSORHARDWARE_ReadValue());
+	DecodeTemperatureReadingFromHardware_ExpectAndReturn(0xAABB,175);
+	TEST_ASSERT_EQUAL_HEX16(175,TEMPSENSORHARDWARE_ReadValue());
 }
 void test_TEMPSENSORHARDWARE_ConversionComplete()
 {

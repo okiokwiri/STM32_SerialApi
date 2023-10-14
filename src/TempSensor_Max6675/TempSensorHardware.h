@@ -2,6 +2,7 @@
 #define TEMPSENSORHARDWARE_H
 #include "spi1.h"
 #include <stdint.h>
+#include "TEMPSENSOR_TemperatureDecoder.h"
 /*
  *This function Initializes the SPI hardware and returns 1 
 */
