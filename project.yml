@@ -27,7 +27,7 @@
 :environment:
 
 :extension:
-  :executable: .elf
+  :executable: .hex
 
 :paths:
   :test:
@@ -44,7 +44,7 @@
   :release_toolchain_include:
     - lib/CMSIS/Device/ST/STM32F4xx/Include/**
     - lib/CMSIS/Include/**
-    - src/bsp/
+    - src/**
   :support:
     - test/support
 
