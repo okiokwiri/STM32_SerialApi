@@ -27,7 +27,7 @@
 :environment:
 
 :extension:
-  :executable: .elf
+  :executable: .hex
 
 :paths:
   :test:
