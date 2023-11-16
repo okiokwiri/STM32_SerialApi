@@ -20,17 +20,35 @@ RUN apt-get update && apt-get install -y wget make
 RUN apt-get install cpio libncurses5 -y
 
 # get the toolchain
-RUN wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/gcc-arm-none-eabi-10-2020-q4-major-x86_64-linux.tar.bz2 -O gcc-arm-none-eabi.tar.bz2
+RUN apt update && \
+    apt install -y gnupg build-essential git git-lfs ca-certificates libltdl-dev \
+    ninja-build gcc-multilib pkg-config libffi-dev gcc-mingw-w64 cmake \
+    autoconf autotools-dev automake autogen libtool m4 gettext wget qemu-system
 
-# unpack the archive to a neatly named target directory
-RUN mkdir gcc-arm-none-eabi && tar xjfv gcc-arm-none-eabi.tar.bz2 -C gcc-arm-none-eabi --strip-components 1
-# remove the archive
-RUN rm gcc-arm-none-eabi.tar.bz2
+# Remove second copy of python, ensure correct version is used
+RUN rm /usr/bin/python3
 
-# add the tools to the path
-ENV PATH="/gcc-arm-none-eabi/bin:${PATH}"
+RUN pip install -U pip setuptools wheel pipenv cpp-coveralls black
 
-WORKDIR /usr/project
+ARG GCC_ARM_RELEASE=gcc-arm-none-eabi-9-2019-q4-major
+ARG GCC_ARM_RELEASE_FILE=${GCC_ARM_RELEASE}-x86_64-linux.tar.bz2
+RUN wget --progress=dot:giga https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2019q4/RC2.1/${GCC_ARM_RELEASE_FILE}
+
+RUN tar -xjvf ${GCC_ARM_RELEASE_FILE}
+RUN rm ${GCC_ARM_RELEASE_FILE}
+
+ENV PATH="/${GCC_ARM_RELEASE}/bin/:${PATH}"
+
+# Print out installed version
+RUN VERSION=$(arm-none-eabi-gcc -dumpversion); \
+   echo "VERSION=$VERSION"
+
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+# Clean up cache
+RUN rm -rf /var/cache/apk/*
+
 
 ENTRYPOINT ["ceedling"]
 CMD ["help"]
