@@ -17,6 +17,11 @@ Queue_T* TxQueue = &TxBuffer;
 	else
 		return 1;
  }
+  uint8_t WriteDataToSerial(uint8_t data)
+  {
+  	return ByteQueue_EnqueueData(&TxBuffer, data);
+
+  }
  // void USART5_IRQHandler (void)
  // {
  	

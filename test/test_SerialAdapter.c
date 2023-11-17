@@ -41,4 +41,9 @@ void test_IsSerialDataAvailableToRead_ShouldReturn0_If_There_Is_No_Data_In_TheRX
 	RxQueue->Size = 0;
 	TEST_ASSERT_EQUAL(0,IsSerialDataAvailableToRead());
 }
+void test_Refactor_Serial(void)
+{
+	TEST_IGNORE_MESSAGE("Need to Refactor Serial");
+}
+
 #endif // TEST
