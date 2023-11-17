@@ -34,4 +34,11 @@ void test_TMR2_Start(void)
 	TMR2_Start(0x12);
 	TEST_ASSERT_EQUAL_HEX16(0x12,TIM2->ARR);
 }
+void test_TMR2_UpdateEventOccured_Shouldreturn1_If_Bit0_Of_Status_Register_Is_Set_And_Return_0_If_Bit_0_Is_Clear()
+{
+	TIM2->SR = 0x01;
+	TEST_ASSERT_EQUAL(1,TMR2_UpdateEventOccured());
+	TIM2->SR = 0x00;
+	TEST_ASSERT_EQUAL(0,TMR2_UpdateEventOccured());
+}
 #endif // TEST

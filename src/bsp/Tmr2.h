@@ -7,4 +7,5 @@ void TMR2_Start(uint16_t ReloadValue);
 
 void TMR2_Stop();
 
+uint8_t TMR2_UpdateEventOccured();
 #endif // TMR2_H

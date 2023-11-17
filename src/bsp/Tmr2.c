@@ -19,3 +19,10 @@ void TMR2_Start(uint16_t ReloadValue)
 {
 	TIM2->ARR = ReloadValue;
 }
+uint8_t TMR2_UpdateEventOccured()
+{
+	if(READ_BIT(TIM2->SR,TIM_SR_UIF))
+		return 1;
+	else
+		return 0 ;
+}
