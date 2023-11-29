@@ -65,4 +65,11 @@ void test_UART5_Write_Should_Write_A_Given_CharacterTo_The_DR_Register(void)
 	 UART5_Write(0x03);
 	 TEST_ASSERT_EQUAL_HEX32(0x03,UART5->DR);
 }
+void test_UART5_DataAvalaibleFromUart(void)
+{
+	UART5->SR = 0x00000021;
+	TEST_ASSERT_EQUAL(1,UART5_DataAvalaibleFromUart());
+	UART5->SR = 0x00000011;
+	TEST_ASSERT_EQUAL(0,UART5_DataAvalaibleFromUart());
+}
 #endif // TEST

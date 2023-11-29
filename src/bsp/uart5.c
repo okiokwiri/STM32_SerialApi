@@ -63,3 +63,10 @@ uint8_t UART5_Read()
 	return UART5->DR;
 
 }
+uint8_t UART5_DataAvalaibleFromUart()
+{
+	if(READ_BIT(UART5->SR,USART_SR_RXNE))
+		return 1;
+	else
+		return 0;
+}

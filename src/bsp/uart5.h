@@ -13,6 +13,7 @@
 */
 
 void UART5_Iniatialize(uint32_t Baudrate);
+uint8_t UART5_DataAvalaibleFromUart();
 void UART5_Write(uint8_t Byte); //This function puts a byte in the UART data register
 
 uint8_t UART5_Read(); // This function reads and returns the contents of the Uart data register
