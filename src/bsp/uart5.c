@@ -70,3 +70,10 @@ uint8_t UART5_DataAvalaibleFromUart()
 	else
 		return 0;
 }
+uint8_t UART5_ReadyToTransmitData()
+{
+	if(READ_BIT(UART5->SR,USART_SR_TXE))
+		return 1;
+	else
+		return 0;
+}

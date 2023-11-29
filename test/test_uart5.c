@@ -72,4 +72,11 @@ void test_UART5_DataAvalaibleFromUart(void)
 	UART5->SR = 0x00000011;
 	TEST_ASSERT_EQUAL(0,UART5_DataAvalaibleFromUart());
 }
+void test_UART5_ReadyToTransmitData(void)
+{
+	UART5->SR = 0x00000081;
+	TEST_ASSERT_EQUAL(1,UART5_ReadyToTransmitData());
+	UART5->SR = 0x00000011;
+	TEST_ASSERT_EQUAL(0,UART5_ReadyToTransmitData());
+}
 #endif // TEST
